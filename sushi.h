@@ -8,30 +8,28 @@
 #include <vector>
 #include <algorithm>
 
-typedef std::vector<string> Vector;
-typedef std::vector<Vector> DoubleVector;
-
 class sushi
 {
 private:
+	typedef std::vector<std::string> Vector;
+	typedef std::vector<Vector> DoubleVector;
 	Vector v;
 	DoubleVector usermetadata;
 	DoubleVector itemmetadata;
+	DoubleVector rankingA;
+	DoubleVector rankingB;
+	DoubleVector sushiB_ratings;
 	void display_double_vector( DoubleVector& dv);
-	void display_vector(vector<string> &v);
+	void display_vector(Vector &v);
 	void deletecolumn(DoubleVector& dv,int n);
 	void deleterow(DoubleVector& dv, int n);
 
 public:
 	void sushiudata();
-	void sushiidata();
-	void ranking_sushi_A();
-	void ranking_sushi_B();
-	void sushiB_ratings();
-
-	
-
-
+	// void sushiidata();
+	// void ranking_sushi_A();
+	// void ranking_sushi_B();
+	// void sushiB_ratings();
 
 };
 #endif
