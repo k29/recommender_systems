@@ -54,8 +54,8 @@ void sushi::sushiudata()
 		}
 	}
 	
-	deletecolumn(usermetadata,0);
-	cout<<"Displaying user metadata (DoubleVector usermetadata)\n";
+	deletecolumn(usermetadata,0);	
+	cout<<"Displaying user metadata (first 4 rows)(DoubleVector usermetadata)\n";
 	display_double_vector(usermetadata);
 }
 
@@ -75,14 +75,13 @@ void sushi::sushiidata()
 			while(stm>>word)
 			{
 				v.push_back(word);
-				//display_vector(v);
 			}
 			itemmetadata.push_back(v);
 		}
 	}
-	deletecolumn(itemmetadata,0); //to delete the first column
+	deletecolumn(itemmetadata,0); 
 	deletecolumn(itemmetadata,0); //to delete the first column after the previous deletion
-	cout<<"Displaying item metadata (DoubleVector itemmetadata)\n";
+	cout<<"Displaying item metadata (first 4 rows)(DoubleVector itemmetadata)\n";
 	display_double_vector(itemmetadata);
 }
 
@@ -100,10 +99,10 @@ void sushi::ranking_sushi_A()
 		{
 			istringstream stm(line);
 			v.clear();
-			while(stm>>word)
+			while(stm>>word) 
 			{
-				if(word=="5")
-					word="15";
+				if(word=="5")				//Mapping the id's of sushi A to that of sushi B(as per README)
+					word="15";				// 5->15, 8-> 26, 9->29, 7->8, 6->7
 				else if(word=="8")
 					word="26";
 				else if(word=="9")
@@ -113,7 +112,6 @@ void sushi::ranking_sushi_A()
 				else if(word=="6")
 					word="7";
 				v.push_back(word);
-				//display_vector(v);
 			}
 			rankingA.push_back(v);
 		}
@@ -140,20 +138,7 @@ void sushi::ranking_sushi_B()
 			v.clear();
 			while(stm>>word)
 			{
-				if(word=="-1")
-					word="0";
-				else if(word=="0")
-					word="1";
-				else if(word=="1")
-					word="2";
-				else if(word=="2")
-					word="3";
-				else if(word=="3")
-					word="4";
-				else if(word=="4")
-					word="5";
 				v.push_back(word);
-				//display_vector(v);
 			}
 			rankingB.push_back(v);
 		}
@@ -179,8 +164,19 @@ void sushi::sushiB_score()
 			v.clear();
 			while(stm>>word)
 			{
+				if(word=="-1")				//now 0 is unrated, and 1 to 5 are the ratings.
+					word="0";
+				else if(word=="0")
+					word="1";
+				else if(word=="1")
+					word="2";
+				else if(word=="2")
+					word="3";
+				else if(word=="3")
+					word="4";
+				else if(word=="4")
+					word="5";
 				v.push_back(word);
-				//display_vector(v);
 			}
 			sushiB_ratings.push_back(v);
 		}
