@@ -26,10 +26,10 @@ private:
 
 public:
 	void sushiudata();
-	// void sushiidata();
-	// void ranking_sushi_A();
-	// void ranking_sushi_B();
-	// void sushiB_ratings();
+	void sushiidata();
+	void ranking_sushi_A();
+	void ranking_sushi_B();
+	void sushiB_score();
 
 };
 #endif

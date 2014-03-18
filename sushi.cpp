@@ -55,131 +55,136 @@ void sushi::sushiudata()
 	}
 	
 	deletecolumn(usermetadata,0);
+	cout<<" Displaying the vector usermetadata\n";
 	display_double_vector(usermetadata);
 }
 
 
-// void sushi::sushiidata()
-// {
-// 	string line;
-// 	string word;
-// 	v.clear();
-// 	ifstream myfile("sushi3.idata");
-// 	if(myfile.is_open())
-// 	{
-// 		while(getline(myfile,line))
-// 		{
-// 			istringstream stm(line);
-// 			v.clear();
-// 			while(stm>>word)
-// 			{
-// 				v.push_back(word);
-// 				//display_vector(v);
-// 			}
-// 			itemmetadata.push_back(v);
-// 		}
-// 	}
-// 	deletecolumn(itemmetadata,0); //to delete the first column
-// 	deletecolumn(itemmetadata,0); //to delete the first column after the previous deletion
-// 	display_double_vector(itemmetadata);
-// }
+void sushi::sushiidata()
+{
+	string line;
+	string word;
+	v.clear();
+	ifstream myfile("sushi3.idata");
+	if(myfile.is_open())
+	{
+		while(getline(myfile,line))
+		{
+			istringstream stm(line);
+			v.clear();
+			while(stm>>word)
+			{
+				v.push_back(word);
+				//display_vector(v);
+			}
+			itemmetadata.push_back(v);
+		}
+	}
+	deletecolumn(itemmetadata,0); //to delete the first column
+	deletecolumn(itemmetadata,0); //to delete the first column after the previous deletion
+	cout<<" Displaying the vector itemdata\n";
+	display_double_vector(itemmetadata);
+}
 
 
 
-// void sushi::ranking_sushi_A()
-// {
-// 	string line;
-// 	string word;
-// 	v.clear();
-// 	ifstream myfile("sushi3a.5000.10.order");
-// 	if(myfile.is_open())
-// 	{
-// 		while(getline(myfile,line))
-// 		{
-// 			istringstream stm(line);
-// 			v.clear();
-// 			while(stm>>word)
-// 			{
-// 				if(word=="5")
-// 					word="15";
-// 				else if(word=="8")
-// 					word="26";
-// 				else if(word=="9")
-// 					word="29";
-// 				else if(word=="7")
-// 					word="8";
-// 				else if(word=="6")
-// 					word="7";
-// 				v.push_back(word);
-// 				//display_vector(v);
-// 			}
-// 			rankingA.push_back(v);
-// 		}
-// 	}
-// 	deleterow(rankingA,0);
-// 	deletecolumn(rankingA,0);
-// 	deletecolumn(rankingA,0);
-// 	display_double_vector(rankingA);
-// }
+void sushi::ranking_sushi_A()
+{
+	string line;
+	string word;
+	v.clear();
+	ifstream myfile("sushi3a.5000.10.order");
+	if(myfile.is_open())
+	{
+		while(getline(myfile,line))
+		{
+			istringstream stm(line);
+			v.clear();
+			while(stm>>word)
+			{
+				if(word=="5")
+					word="15";
+				else if(word=="8")
+					word="26";
+				else if(word=="9")
+					word="29";
+				else if(word=="7")
+					word="8";
+				else if(word=="6")
+					word="7";
+				v.push_back(word);
+				//display_vector(v);
+			}
+			rankingA.push_back(v);
+		}
+	}
+	deleterow(rankingA,0);
+	deletecolumn(rankingA,0);
+	deletecolumn(rankingA,0);
+	cout<<" Displaying the vector rankingA \n";
+	display_double_vector(rankingA);
+}
 
-// void sushi::ranking_sushi_B()
-// {
-// 	v.clear();
-// 	string line;
-// 	string word;
+void sushi::ranking_sushi_B()
+{
+	v.clear();
+	string line;
+	string word;
 	
-// 	ifstream myfile("sushi3b.5000.10.order");
-// 	if(myfile.is_open())
-// 	{
-// 		while(getline(myfile,line))
-// 		{
-// 			istringstream stm(line);
-// 			v.clear();
-// 			while(stm>>word)
-// 			{
-// 				if(word=="-1")
-// 					word="0";
-// 				else if(word=="0")
-// 					word="1";
-// 				else if(word=="1")
-// 					word="2";
-// 				else if(word=="2")
-// 					word="3";
-// 				else if(word=="3")
-// 					word="4";
-// 				else if(word=="4")
-// 					word="5";
-// 				v.push_back(word);
-// 				//display_vector(v);
-// 			}
-// 			rankingB.push_back(v);
-// 		}
-// 	}
-// 	deleterow(rankingB,0);
-// 	deletecolumn(rankingB,0);
-// 	deletecolumn(rankingB,0);
-// 	display_double_vector(rankingB);
-// }
+	ifstream myfile("sushi3b.5000.10.order");
+	if(myfile.is_open())
+	{
+		while(getline(myfile,line))
+		{
+			istringstream stm(line);
+			v.clear();
+			while(stm>>word)
+			{
+				if(word=="-1")
+					word="0";
+				else if(word=="0")
+					word="1";
+				else if(word=="1")
+					word="2";
+				else if(word=="2")
+					word="3";
+				else if(word=="3")
+					word="4";
+				else if(word=="4")
+					word="5";
+				v.push_back(word);
+				//display_vector(v);
+			}
+			rankingB.push_back(v);
+		}
+	}
+	deleterow(rankingB,0);
+	deletecolumn(rankingB,0);
+	deletecolumn(rankingB,0);
+	cout<<" Displaying the vector rankingB\n";
+	display_double_vector(rankingB);
+}
 
-// void sushi::sushiB_ratings()
-// {
-// 	string line;
-// 	string word;
-// 	v.clear();
-// 	ifstream myfile("sushi3b.5000.10.score");
-// 	if(myfile.is_open())
-// 	{
-// 		while(getline(myfile,line))
-// 		{
-// 			istringstream stm(line);
-// 			v.clear();
-// 			while(stm>>word)
-// 			{
-// 				v.push_back(word);
-// 				//display_vector(v);
-// 			}
-// 			sushiB_ratings.push_back(v);
-// 		}
-// 	}
-// 	display_double_vector(sushiB_ratings);
-// }
+void sushi::sushiB_score()
+{
+	string line;
+	string word;
+	v.clear();
+	ifstream myfile("sushi3b.5000.10.score");
+	if(myfile.is_open())
+	{
+		while(getline(myfile,line))
+		{
+			istringstream stm(line);
+			v.clear();
+			while(stm>>word)
+			{
+				v.push_back(word);
+				//display_vector(v);
+			}
+			sushiB_ratings.push_back(v);
+		}
+	}
+	cout<<" Displaying the vector sushiB_ratings \n";
+	display_double_vector(sushiB_ratings);
+}
