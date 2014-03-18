@@ -13,6 +13,7 @@ class sushi
 private:
 	typedef std::vector<std::string> Vector;
 	typedef std::vector<Vector> DoubleVector;
+	
 	Vector v;
 	
 	void display_double_vector( DoubleVector& dv);
