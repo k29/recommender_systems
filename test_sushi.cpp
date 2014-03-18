@@ -2,6 +2,7 @@
 
 int main(int argc, char const *argv[])
 {
-	sushiudata();
+	sushi dataset;
+	dataset.sushiudata();
 	return 0;
 }
