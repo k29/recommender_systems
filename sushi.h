@@ -26,6 +26,7 @@ public:
 	DoubleVector rankingA;
 	DoubleVector rankingB;
 	DoubleVector sushiB_ratings;
+	
 	void sushiudata();
 	void sushiidata();
 	void ranking_sushi_A();

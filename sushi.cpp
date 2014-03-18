@@ -55,7 +55,7 @@ void sushi::sushiudata()
 	}
 	
 	deletecolumn(usermetadata,0);
-	cout<<" Displaying the vector usermetadata\n";
+	cout<<"Displaying user metadata (DoubleVector usermetadata)\n";
 	display_double_vector(usermetadata);
 }
 
@@ -82,7 +82,7 @@ void sushi::sushiidata()
 	}
 	deletecolumn(itemmetadata,0); //to delete the first column
 	deletecolumn(itemmetadata,0); //to delete the first column after the previous deletion
-	cout<<" Displaying the vector itemdata\n";
+	cout<<"Displaying item metadata (DoubleVector itemmetadata)\n";
 	display_double_vector(itemmetadata);
 }
 
@@ -121,7 +121,7 @@ void sushi::ranking_sushi_A()
 	deleterow(rankingA,0);
 	deletecolumn(rankingA,0);
 	deletecolumn(rankingA,0);
-	cout<<" Displaying the vector rankingA \n";
+	cout<<"Displaying the rankings for Sushi A (first 4 rows)(DoubleVector rankingA) \n";
 	display_double_vector(rankingA);
 }
 
@@ -161,7 +161,7 @@ void sushi::ranking_sushi_B()
 	deleterow(rankingB,0);
 	deletecolumn(rankingB,0);
 	deletecolumn(rankingB,0);
-	cout<<" Displaying the vector rankingB\n";
+	cout<<"Displaying the rankings for Sushi B (first 4 rows)(DoubleVector rankingB)\n";
 	display_double_vector(rankingB);
 }
 
@@ -185,6 +185,6 @@ void sushi::sushiB_score()
 			sushiB_ratings.push_back(v);
 		}
 	}
-	cout<<" Displaying the vector sushiB_ratings \n";
+	cout<<"Displaying the ratings for Sushi B (first 4 rows) (Doublevector sushiB_ratings) \n";
 	display_double_vector(sushiB_ratings);
 }
