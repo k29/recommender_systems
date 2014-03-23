@@ -10,21 +10,30 @@ void print_message(FILE* target, const char* str)
 	fprintf(target, "%s", str);
 }
 
+void extract_user_metadata(SGMatrix<int32_t>& user_metadata)
+{
+	CCSVFile *fin;
+	fin=new CCSVFile("sushi3.udata",'r',NULL);
+	fin->set_delimiter('	');
+	fin->get_matrix(user_metadata.matrix,user_metadata.num_cols,user_metadata.num_rows);
+
+	int32_t rows=1;
+	int32_t cols=11;
+	user_metadata.display_matrix(user_metadata.matrix,rows,cols,"user_metadata","");
+	
+	cout<<"num_cols "<<user_metadata.num_cols<<"\n";
+	cout<<"num_rows "<<user_metadata.num_rows;
+}
+
 int main(int argc, char const *argv[])
 {
 	init_shogun(&print_message);
-	CCSVFile *fin;
-	// int32_t num_rows=5000;
-	// int32_t num_cols=5000;
-	int32_t rows=1;
-	int32_t cols=11;
-	SGMatrix<int32_t> sushidata(true);
-	fin=new CCSVFile("sushi3.udata",'r',NULL);
-	fin->set_delimiter('	');
-	fin->get_matrix(sushidata.matrix,sushidata.num_cols,sushidata.num_rows);
-	sushidata.display_matrix(sushidata.matrix,rows,cols,"sushidata","");
-	cout<<"num_cols "<<sushidata.num_cols;
-	cout<<"num_rows "<<sushidata.num_rows;
+
+	SGMatrix<int32_t> user_metadata(true);
+	extract_user_metadata(user_metadata);
+
+	
+	
 
 	return 0;
 }
