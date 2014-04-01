@@ -1,4 +1,4 @@
-<h1>Recommender Systems<h1>
+<h1>Recommender Systems</h1>
 
 <h2>Datasets for Recommendation System</h2>
 
@@ -15,7 +15,7 @@ Just clone, make and run ./sushi to extract the following from sushi3 dataset:
 <li> Ratings for sushi B
 </ol>
 
-<li> Movie Lens Data
+<li> <h3>Movie Lens Data</h3>
 
 </ol>
 
