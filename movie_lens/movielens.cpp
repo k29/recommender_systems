@@ -15,13 +15,13 @@ void print_message(FILE* target, const char* str)
 	fprintf(target, "%s", str);
 }
 
-
-void extract_user_rating(SGMatrix<int32_t> &userRatings) //user_ratings has the data in the 943*1682 matrix
+//funtion to extract user rating info from a file .data. may be test data or train data or the entire dataset as well as per the filename.
+void extract_user_rating(char* fileName,SGMatrix<int32_t> &userRatings) //user_ratings has the data in the 943*1682 matrix
 {
 	SGMatrix<int32_t> input_udata(true); //matrix to take in the raw input
 
 	CCSVFile *fin;
-	fin=new CCSVFile("ml-100k/u.data",'r',NULL);
+	fin=new CCSVFile(fileName,'r',NULL);
 	fin->set_delimiter('	');
 	fin->get_matrix(input_udata.matrix,input_udata.num_cols,input_udata.num_rows);
 	
@@ -38,7 +38,7 @@ void extract_user_rating(SGMatrix<int32_t> &userRatings) //user_ratings has the 
 		rating=input_udata[4*i+2];
 		userRatings(user_id-1,movie_id-1)=rating;
 	}
-	//userRatings.display_matrix("userRatings");
+	userRatings.display_matrix("userRatings");
 }
 
 
@@ -58,10 +58,9 @@ void extract_movie_metadata(SGMatrix<int32_t> &movieMetadata)
 
 	CLineReader *lineReader=new CLineReader(fin,tokenLineReader);
 
-	//Read the line(string) using a parse and the delimiter "|"
+	//Read the line(string) in lineReader using a parser and the delimiter "|"
 	CDelimiterTokenizer *tokenizer=new CDelimiterTokenizer(false);
 	tokenizer->delimiters['|']=1;
-	// tokenizer->set_skip_delimiters(false);
 	SG_REF(tokenizer);
 
 	CParser *parse;
@@ -84,7 +83,6 @@ void extract_movie_metadata(SGMatrix<int32_t> &movieMetadata)
 			col++;
 		}
 		row++;
-		
 	}
 	SG_UNREF(tokenLineReader);
 	SG_UNREF(tokenizer);
@@ -96,13 +94,14 @@ int main(int argc, char const *argv[])
 {
 	init_shogun(&print_message);
 
+	char fileName[]="ml-100k/u.data";
 	SGMatrix<int32_t> userRatings(943,1682,true); //defining the user rating matrix having the correspoinding rating in the 943x1682 matrix
-	extract_user_rating(userRatings);
+	extract_user_rating(fileName,userRatings);
 
 	SGMatrix<int32_t> movieMetadata(1682,19,true); //contains genre info
 	extract_movie_metadata(movieMetadata);
 
-	
+
 	
 
 	return 0;
