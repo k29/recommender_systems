@@ -47,21 +47,49 @@ void extract_movie_metadata(SGMatrix<int32_t> &movieMetadata)
 	SGMatrix<int32_t> input_mdata(true); //matrix to take in the raw input
 
 	FILE *fin;
-	fin=new FILE("ml-100k/u.item",'r',NULL);
+	fin=fopen("ml-100k/u.item","rb");
 
+
+	//Read the ascii file using LineReader and delimiter "\n"
 	SGVector<char> line;
+	CDelimiterTokenizer *tokenLineReader=new CDelimiterTokenizer(false);
+	tokenLineReader->delimiters['\n']=1;
+	SG_REF(tokenLineReader);
 
-	CDelimiterTokenizer *tokenLine=new CDelimiterTokenizer(true);
-	tokenLine->delimiters['\n']=1;
-	SG_REF(tokenLine);
+	CLineReader *lineReader=new CLineReader(fin,tokenLineReader);
 
-	CDelimiterTokenizer *tokenizer=new CDelimiterTokenizer(true);
+	//Read the line(string) using a parse and the delimiter "|"
+	CDelimiterTokenizer *tokenizer=new CDelimiterTokenizer(false);
 	tokenizer->delimiters['|']=1;
+	// tokenizer->set_skip_delimiters(false);
 	SG_REF(tokenizer);
-	
-	CLineReader *reader=new CLineReader(fin,tokenLine);
 
+	CParser *parse;
 
+	//Actual reading:
+	int32_t row=0;
+	while(lineReader->has_next())
+	{
+		line=lineReader->read_line();
+		parse=new CParser(line,tokenizer);
+		int32_t col=0;
+		while(parse->has_next())
+		{
+			if(col<5)
+				(parse->read_string());
+			else
+			{
+				movieMetadata(row,col-5)=parse->read_real();
+			}
+			col++;
+		}
+		row++;
+		
+	}
+	SG_UNREF(tokenLineReader);
+	SG_UNREF(tokenizer);
+
+	movieMetadata.display_matrix("movieMetadata");
 }
 
 int main(int argc, char const *argv[])
@@ -73,6 +101,8 @@ int main(int argc, char const *argv[])
 
 	SGMatrix<int32_t> movieMetadata(1682,19,true); //contains genre info
 	extract_movie_metadata(movieMetadata);
+
+	
 	
 
 	return 0;
